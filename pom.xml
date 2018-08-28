@@ -7,8 +7,9 @@
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>springboot-aop-log</module>
-	</modules>
+		<module>springboot-global-exception</module>
+        <module>springboot-log</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>springboot</name>
