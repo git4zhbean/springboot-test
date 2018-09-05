@@ -9,6 +9,7 @@
 	<modules>
 		<module>springboot-global-exception</module>
         <module>springboot-log</module>
+        <module>utils</module>
     </modules>
 	<packaging>pom</packaging>
 
