@@ -22,7 +22,6 @@ public class GlobalExceptionHandler{
     public ResponseData defaultExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
 
-        RuntimeException exception = (RuntimeException) e;
         System.out.println("-------------GlobalExceptionHandler.defaultExceptionHandler----------");
         return ResponseData.error(400, e.getMessage());
     }
