@@ -7,10 +7,14 @@
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>springboot-global-exception</module>
-        <module>springboot-log</module>
-        <module>utils</module>
-    <module>code-generator</module>
+		<module>chapter-1-1</module>
+		<module>chapter-2-1</module>
+		<module>chapter-2-2</module>
+		<module>chapter-4-1</module>
+		<module>chapter-5-1</module>
+
+		<module>utils</module>
+		<module>java8new</module>
   </modules>
 	<packaging>pom</packaging>
 
