@@ -1,6 +1,9 @@
 package com.dxy.zhbean.java8new.lambda;
 
+import org.junit.Test;
+
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -21,6 +24,15 @@ public class ParallelTest {
         Arrays.stream(longArr).limit(10).forEach(i->System.out.print(i+" "));
     }
 
+    @Test
+    public void test() {
+        String s = "sds,wew,weos,sdmkla,sioom,cmsd";
+        List<String> list = Arrays.asList(s.split(","));
+        System.out.println(list);
+//        Collections.sort(list);
+        list.stream().sorted();
+        System.out.println(list);
+    }
 
 
 }
