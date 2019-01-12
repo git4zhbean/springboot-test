@@ -12,8 +12,10 @@
 		<module>chapter-2-2</module>
 		<module>chapter-4-1</module>
 		<module>chapter-4-2</module>
+		<module>chapter-4-3</module>
 		<module>chapter-5-1</module>
 
+    <module>test</module>
 		<module>utils</module>
 		<module>java8new</module>
   </modules>
