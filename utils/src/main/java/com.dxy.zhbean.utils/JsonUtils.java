@@ -1,10 +1,16 @@
 package com.dxy.zhbean.utils;
 
+import org.noggit.JSONParser;
+import org.noggit.ObjectBuilder;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
+ * 1.将json字符串转为map
+ * 2.获取map指定节点的value
  *
  * @author: zhbean
  * @Date: 2018/9/5
@@ -13,7 +19,48 @@ public class JsonUtils {
 
 
     /**
-     *  read a String value from a json object tree
+     * 将json字符串转为List
+     * @param json
+     * @return
+     * @throws IOException
+     */
+    public static List<Object> json2List(String json) throws IOException {
+        return transJson(List.class, json);
+    }
+
+    /**
+     * 将json字符串转为map
+     * @param json
+     * @return
+     * @throws IOException
+     */
+    public static Map<String, Object> json2Map(String json) throws IOException {
+        return transJson(Map.class, json);
+    }
+
+    /**
+     * transform json string to the special class
+     * @param clazz
+     * @param json
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
+    public static <T> T transJson(Class<T> clazz, String json) throws IOException {
+        T result = null;
+        Object val = ObjectBuilder.getVal(new JSONParser(json));
+        if (clazz.isAssignableFrom(val.getClass())) {
+            result = (T) val;
+        } else {
+            throw new IllegalStateException("Expected a " + clazz.getName() + " but found " + val + " instead! " + json);
+        }
+        return result;
+    }
+
+
+    /**
+     * read a String value from a json object tree
+     *
      * @param jsonPath
      * @param json
      * @return
@@ -24,6 +71,7 @@ public class JsonUtils {
 
     /**
      * read a Long value from a json object tree
+     *
      * @param jsonPath
      * @param json
      * @return
@@ -34,6 +82,7 @@ public class JsonUtils {
 
     /**
      * read a List from a json object tree
+     *
      * @param jsonPath
      * @param json
      * @return
@@ -44,6 +93,7 @@ public class JsonUtils {
 
     /**
      * read a Map from a json object tree
+     *
      * @param jsonPath
      * @param json
      * @return
@@ -60,7 +110,7 @@ public class JsonUtils {
         if (obj != null) {
             if (clazz.isAssignableFrom(obj.getClass())) {
                 result = (T) obj;
-            }else{
+            } else {
                 throw new IllegalStateException("Expected a " + clazz.getName() + " at path " +
                         jsonPath + " but found " + obj + " instead! " + json);
             }
@@ -71,6 +121,7 @@ public class JsonUtils {
 
     /**
      * read an object of unknow type from a json object tree
+     *
      * @param jsonPath
      * @param json
      * @return
@@ -114,8 +165,5 @@ public class JsonUtils {
         }
         return result;
     }
-
-
-
 
 }
