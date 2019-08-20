@@ -14,6 +14,9 @@
 		<module>chapter-4-2</module>
 		<module>chapter-4-3</module>
 		<module>chapter-5-1</module>
+		<module>chapter-5-2</module>
+		<module>chapter-6-1</module>
+		<module>chapter-6-2</module>
 
     <module>test</module>
 		<module>utils</module>
