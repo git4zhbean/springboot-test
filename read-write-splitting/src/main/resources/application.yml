@@ -1,0 +1,35 @@
+server:
+  port: 8901
+
+spring:
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://localhost:3306/mastertest?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://localhost:3306/mastertest?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      password: rootbean
+      username: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave1:
+      jdbc-url: jdbc:mysql://localhost:3306/slave1test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+#      url: jdbc:mysql://localhost:3306/slave1test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      password: rootbean
+      username: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave2:
+      jdbc-url: jdbc:mysql://localhost:3306/slave2test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      password: rootbean
+      username: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.dxy.zhbean.readwritesplitting.model
+  config-location: classpath:/conf/mybatis-config.xml
+  mapper-locations: classpath:/mapping/*.xml
+
+
+
+
+
+
+
+

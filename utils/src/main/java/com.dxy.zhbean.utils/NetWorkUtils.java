@@ -1,9 +1,8 @@
 package com.dxy.zhbean.utils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
+import java.io.IOException;
+import java.net.*;
 import java.util.Enumeration;
 
 /**
@@ -128,6 +127,20 @@ public class NetWorkUtils {
             }
         }
         return ip;
+    }
+
+    //判断ip是否可以连通（相当于ping ip）
+    public static boolean isIPValid(String ip) throws IOException {
+        InetAddress address = InetAddress.getByName(ip);
+        return address.isReachable(2000);
+    }
+
+    //判断服务是否可用
+    public static boolean isServerValid(String url) throws IOException {
+        URL url1 = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
+        conn.setConnectTimeout(2000);
+        return conn.getResponseCode() == HttpURLConnection.HTTP_OK;
     }
 
     public static void main(String[] args){
