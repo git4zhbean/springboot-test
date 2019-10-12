@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhbean.rwsplitting.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.zhbean.rwsplitting.controller.model.Company" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="enName" property="enname" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="modified" property="modified" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="operater" property="operater" jdbcType="VARCHAR" />
+    <result column="effective" property="effective" jdbcType="TINYINT" />
+    <result column="shortName" property="shortname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, enName, created, modified, state, operater, effective, shortName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zhbean.rwsplitting.controller.model.Company" >
+    insert into company (id, name, enName, 
+      created, modified, state, 
+      operater, effective, shortName
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{enname,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{modified,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{operater,jdbcType=VARCHAR}, #{effective,jdbcType=TINYINT}, #{shortname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhbean.rwsplitting.controller.model.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="enname != null" >
+        enName,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="modified != null" >
+        modified,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="operater != null" >
+        operater,
+      </if>
+      <if test="effective != null" >
+        effective,
+      </if>
+      <if test="shortname != null" >
+        shortName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null" >
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null" >
+        #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="operater != null" >
+        #{operater,jdbcType=VARCHAR},
+      </if>
+      <if test="effective != null" >
+        #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="shortname != null" >
+        #{shortname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhbean.rwsplitting.controller.model.Company" >
+    update company
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null" >
+        enName = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modified != null" >
+        modified = #{modified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="operater != null" >
+        operater = #{operater,jdbcType=VARCHAR},
+      </if>
+      <if test="effective != null" >
+        effective = #{effective,jdbcType=TINYINT},
+      </if>
+      <if test="shortname != null" >
+        shortName = #{shortname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhbean.rwsplitting.controller.model.Company" >
+    update company
+    set name = #{name,jdbcType=VARCHAR},
+      enName = #{enname,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      modified = #{modified,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      operater = #{operater,jdbcType=VARCHAR},
+      effective = #{effective,jdbcType=TINYINT},
+      shortName = #{shortname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List"/>
+    from company
+    order by created desc
+  </select>
+
+</mapper>
